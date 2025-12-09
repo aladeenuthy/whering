@@ -1,20 +1,49 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/features/user/domain/models/wardrobe_piece.dart';
+import 'package:whering/features/features.dart';
 
-import '../../../../core/resources/app_colors.dart';
-import '../../../../core/resources/app_size.dart';
-
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final WardrobePiece piece;
 
   const ProductCard({super.key, required this.piece});
 
   @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isFavorite = false;
+  bool isVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.piece.isFavorite ?? false;
+  }
+
+  setIsFavorite(bool value) {
+    setState(() {
+      isFavorite = value;
+    });
+  }
+
+  setIsVisible(bool value) {
+    setState(() {
+      isVisible = value;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {HapticFeedback.lightImpact()},
+      key: ValueKey(widget.piece.id),
+      onTap: () => {
+        HapticFeedback.lightImpact(),
+        AppRouter.to(
+          page: ItemDetailScreen(
+            piece: widget.piece.copyWith(isFavorite: isFavorite),
+          ),
+        ),
+      },
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -23,23 +52,23 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(AppSize.s16),
+              borderRadius: BorderRadius.circular(12.r),
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
                 color: AppColors.white,
-                child: piece.imageUrl.isNotEmpty
+                padding: EdgeInsets.all(12),
+                child: widget.piece.imageUrl.isNotEmpty
                     ? Image.network(
-                        piece.imageUrl,
+                        widget.piece.imageUrl,
                         fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
-                          return _PlaceholderContent();
+                          return ImagePlaceholder();
                         },
                       )
-                    : _PlaceholderContent(),
+                    : ImagePlaceholder(),
               ),
             ),
-
             Positioned(
               top: 12.h,
               left: 0,
@@ -49,20 +78,31 @@ class ProductCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.visibility_outlined,
-                      size: 20,
-                      color: AppColors.grey.withValues(alpha: 0.5),
+                    GestureDetector(
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        setIsVisible(!isVisible);
+                      },
+                      child: Icon(
+                        Icons.visibility_outlined,
+                        size: 20,
+                        color: isVisible
+                            ? AppColors.textColor
+                            : AppColors.grey.withValues(alpha: 0.5),
+                      ),
                     ),
                     GestureDetector(
-                      onTap: () => {HapticFeedback.lightImpact()},
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        setIsFavorite(!isFavorite);
+                      },
                       child: Icon(
-                        piece.isFavorite == true
+                        isFavorite == true
                             ? Icons.favorite
                             : Icons.favorite_border,
                         size: 14,
-                        color: piece.isFavorite == true
-                            ? AppColors.secondary
+                        color: isFavorite == true
+                            ? AppColors.textColor
                             : AppColors.grey.withValues(alpha: 0.5),
                       ),
                     ),
@@ -71,22 +111,6 @@ class ProductCard extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _PlaceholderContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.white,
-      child: Center(
-        child: Icon(
-          Icons.checkroom,
-          size: 48.sp,
-          color: AppColors.grey.withValues(alpha: 0.5),
         ),
       ),
     );

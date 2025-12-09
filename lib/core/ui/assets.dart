@@ -55,7 +55,9 @@ enum AssetSvgs {
   grid('assets/svgs/grid.svg'),
   bookmark('assets/svgs/bookmark.svg'),
   stats('assets/svgs/stats.svg'),
-  favIcon('assets/svgs/fav_icon.svg');
+  favIcon('assets/svgs/fav_icon.svg'),
+  share('assets/svgs/share.svg'),
+  edit('assets/svgs/edit.svg');
 
   final String path;
   const AssetSvgs(this.path);

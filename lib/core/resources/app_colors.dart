@@ -7,6 +7,10 @@ class AppColors {
   static Color textColor = HexColor.fromHex("#242424");
   static Color appBgColor = HexColor.fromHex("#F5F5F5");
   static Color grey = HexColor.fromHex("#D6D6D6");
+  static Color textSecondary = HexColor.fromHex("#707070");
+  static Color primaryLight = HexColor.fromHex("#E5D7FF");
+  static Color greyDark = HexColor.fromHex("#B2B2B2");
+  static Color alert = HexColor.fromHex("#FF5CDB");
 }
 
 extension HexColor on Color {
@@ -14,9 +18,8 @@ extension HexColor on Color {
     hexColorString = hexColorString.replaceAll("#", "").trim();
 
     if (hexColorString.length == 6) {
-      hexColorString = "FF$hexColorString"; 
+      hexColorString = "FF$hexColorString";
     }
     return Color(int.parse(hexColorString, radix: 16));
   }
 }
-

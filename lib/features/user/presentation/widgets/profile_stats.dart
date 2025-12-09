@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whering/core/resources/app_colors.dart';
 import 'package:whering/core/resources/app_fonts.dart';
-
-import '../../../../core/resources/app_colors.dart';
-import '../../../../core/resources/app_text_styles.dart';
-import '../../../../core/ui/spacing.dart';
+import 'package:whering/core/resources/app_text_styles.dart';
+import 'package:whering/core/ui/spacing.dart';
 
 class ProfileTabs extends StatelessWidget {
   final int itemsCount;
@@ -26,7 +25,7 @@ class ProfileTabs extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(
-          child: _StatItem(
+          child: StatItem(
             count: itemsCount,
             label: 'Items',
             isSelected: selectedIndex == 0,
@@ -34,7 +33,7 @@ class ProfileTabs extends StatelessWidget {
         ),
         AppSpacings.horizontalSpaceExtraLarge(),
         Expanded(
-          child: _StatItem(
+          child: StatItem(
             count: outfitsCount,
             label: 'Outfits',
             isSelected: selectedIndex == 1,
@@ -42,7 +41,7 @@ class ProfileTabs extends StatelessWidget {
         ),
         AppSpacings.horizontalSpaceExtraLarge(),
         Expanded(
-          child: _StatItem(
+          child: StatItem(
             count: lookbooksCount,
             label: 'Lookbooks',
             isSelected: selectedIndex == 2,
@@ -53,12 +52,13 @@ class ProfileTabs extends StatelessWidget {
   }
 }
 
-class _StatItem extends StatelessWidget {
+class StatItem extends StatelessWidget {
   final int count;
   final String label;
   final bool isSelected;
 
-  const _StatItem({
+  const StatItem({
+    super.key,
     required this.count,
     required this.label,
     required this.isSelected,

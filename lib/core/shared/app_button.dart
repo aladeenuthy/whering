@@ -23,6 +23,7 @@ class AppButton extends StatefulWidget {
     this.holdDuration = const Duration(seconds: 1),
     this.onHoldChanged,
     this.expanded = true,
+    this.height,
   }) : gradient = null,
        assert(label != null || child != null);
 
@@ -40,6 +41,7 @@ class AppButton extends StatefulWidget {
     this.holdDuration = const Duration(seconds: 1),
     this.onHoldChanged,
     this.expanded = true,
+    this.height,
   }) : color = Colors.transparent,
        assert(label != null || child != null);
   final String? label;
@@ -51,6 +53,7 @@ class AppButton extends StatefulWidget {
   final BorderRadius? borderRadius;
   final EdgeInsetsGeometry? margin;
   final Gradient? gradient;
+  final double? height;
 
   /// When true, the user must press and hold for [holdDuration] before [onPressed] is called.
   final bool holdToConfirm;
@@ -160,7 +163,7 @@ class _AppButtonState extends State<AppButton>
     final Widget buttonContent = AnimatedDefaultTextStyle(
       duration: const Duration(milliseconds: 1200),
       curve: Curves.fastLinearToSlowEaseIn,
-      style: getMediumStyle(color: AppColors.textColor, fontSize: 12),
+      style: getSemiBoldStyle(color: AppColors.textColor, fontSize: 14),
       child: GestureDetector(
         onTapDown: _handleTapDown,
         onTapUp: _handleTapUp,
@@ -176,7 +179,7 @@ class _AppButtonState extends State<AppButton>
           curve: Curves.fastLinearToSlowEaseIn,
           opacity: widget.enabled ? 1 : 1.0,
           child: Container(
-            height: 56.h,
+            height: widget.height?.h ?? 40.h,
             decoration: BoxDecoration(
               color: widget.gradient == null
                   ? widget.enabled
@@ -184,7 +187,7 @@ class _AppButtonState extends State<AppButton>
                         : AppColors.grey
                   : null,
               gradient: widget.gradient,
-              borderRadius: widget.borderRadius ?? BorderRadius.circular(40),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(4),
             ),
             child: Stack(
               alignment: Alignment.center,

@@ -1,15 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/shared/app_loading_overlay.dart';
-import 'package:whering/core/ui/assets.dart';
-import 'package:whering/core/ui/spacing.dart';
-
-import '../../../../core/resources/app_colors.dart';
-import '../bloc/get_user_wardrobe_cubit.dart';
-import '../widgets/category_list.dart';
-import '../widgets/products_grid.dart';
-import '../widgets/profile_card.dart';
+import 'package:whering/features/features.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

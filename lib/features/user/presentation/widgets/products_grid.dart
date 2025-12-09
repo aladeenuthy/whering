@@ -1,14 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-
-import '../../../../core/resources/app_fonts.dart';
-import '../../../../core/shared/app_retry_widget.dart';
-import '../../../../core/ui/spacing.dart';
-import '../bloc/get_user_wardrobe_cubit.dart';
-import 'product_card.dart';
+import 'package:whering/features/features.dart';
 
 class ProductsGrid extends StatelessWidget {
   const ProductsGrid({super.key});

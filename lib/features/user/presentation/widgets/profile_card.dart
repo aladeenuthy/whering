@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/ui/spacing.dart';
-
-import '../../../../core/resources/app_colors.dart';
-import '../../../../core/resources/app_text_styles.dart';
-import '../../../../core/shared/app_animated_column.dart';
-import '../../../../core/ui/assets.dart';
-import 'profile_stats.dart';
-import 'style_tag.dart';
+import 'package:whering/features/features.dart';
 
 class ProfileCard extends StatelessWidget {
   static const double avatarHeight = 88;
@@ -60,7 +51,7 @@ class ProfileCard extends StatelessWidget {
                 style: getMediumStyle(fontSize: 12, color: AppColors.textColor),
               ),
               AppSpacings.vertical(12),
-              Row(
+              AppAnimatedRow(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const ['MINIMAL', 'TIMELESS', 'CLASSIC']
                     .map(
@@ -108,14 +99,14 @@ class ProfileCard extends StatelessWidget {
                       ),
                     ),
 
-                    Row(
+                    AppAnimatedRow(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _NavIcon(icon: AssetSvgs.bookmark),
+                        NavIcon(icon: AssetSvgs.bookmark),
                         AppSpacings.horizontalSpaceMedium(),
-                        _NavIcon(icon: AssetSvgs.grid),
+                        NavIcon(icon: AssetSvgs.grid),
                         AppSpacings.horizontalSpaceMedium(),
-                        _NavIcon(icon: AssetSvgs.stats),
+                        NavIcon(icon: AssetSvgs.stats),
                       ],
                     ),
                   ],
@@ -131,10 +122,10 @@ class ProfileCard extends StatelessWidget {
   }
 }
 
-class _NavIcon extends StatelessWidget {
+class NavIcon extends StatelessWidget {
   final AssetSvgs icon;
 
-  const _NavIcon({required this.icon});
+  const NavIcon({super.key, required this.icon});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:whering/core/ui/assets.dart';
-
-import 'category_widget.dart';
+import 'package:whering/features/features.dart';
 
 final List<Category> categories = const [
   Category(label: 'All', image: AssetPngs.all),
@@ -29,7 +26,7 @@ class CategoryList extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
 
-      child: Row(
+      child: AppAnimatedRow(
         children: List.generate(
           categories.length,
           (index) => CategoryWidget(
