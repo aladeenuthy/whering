@@ -10,6 +10,7 @@ class ItemDetailScreen extends StatefulWidget {
 }
 
 class _ItemDetailScreenState extends State<ItemDetailScreen> {
+  int _index = 0;
   bool _isFavorite = false;
   List<String> _tags = [];
 
@@ -18,6 +19,12 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
     super.initState();
     _isFavorite = widget.piece.isFavorite ?? false;
     _tags = List<String>.from(widget.piece.tags);
+  }
+
+  void _onTabChanged(int index) {
+    setState(() {
+      _index = index;
+    });
   }
 
   void _onFavoritePressed() {
@@ -75,6 +82,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                               imageUrl: widget.piece.imageUrl,
                               id: widget.piece.id,
                             ),
+                            AppSpacings.verticalSpaceMedium(),
                             ItemActionRow(
                               isFavorite: _isFavorite,
                               onFavoritePressed: _onFavoritePressed,
@@ -83,17 +91,22 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                         ),
                       ),
                       AppSpacings.verticalSpaceLarge(),
-                      ItemTabBar(),
+                      ItemTabBar(
+                        selectedIndex: _index,
+                        onTabChanged: _onTabChanged,
+                      ),
                       AppSpacings.verticalSpaceLarge(),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: AboutTab(
-                          piece: widget.piece,
-                          tags: _tags,
+                        child: TabContentBuilder(
+                          index: _index,
                           onTagRemoved: _onTagRemoved,
+                          piece: widget.piece,
+                          onTabChanged: _onTabChanged,
+                          tags: _tags,
                         ),
                       ),
-                      AppSpacings.vertical(200.h),
+                      AppSpacings.vertical(250.h),
                     ],
                   ),
                 ),
@@ -104,5 +117,57 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
         ],
       ),
     );
+  }
+}
+
+class TabContentBuilder extends StatelessWidget {
+  const TabContentBuilder({
+    super.key,
+    required this.index,
+    required this.tags,
+    required this.onTagRemoved,
+    required this.piece,
+    required this.onTabChanged,
+  });
+  final int index;
+  final List<String> tags;
+  final ValueChanged<String>? onTagRemoved;
+  final WardrobePiece piece;
+  final ValueChanged<int> onTabChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    if (index == 0) {
+      return AboutTab(piece: piece, tags: tags, onTagRemoved: onTagRemoved);
+    } else if (index == 1) {
+      return Column(
+        children: [
+          AppSpacings.vertical(50),
+          Text(
+            'Styling Tab',
+            style: getBoldStyle(
+              color: AppColors.textColor,
+              fontSize: 24,
+              fontFamily: FontConstants.spaceMono,
+            ),
+          ),
+        ],
+      );
+    } else if (index == 2) {
+      return Column(
+        children: [
+          AppSpacings.vertical(50),
+          Text(
+            'Stats Tab',
+            style: getBoldStyle(
+              color: AppColors.textColor,
+              fontSize: 24,
+              fontFamily: FontConstants.spaceMono,
+            ),
+          ),
+        ],
+      );
+    }
+    return const SizedBox.shrink();
   }
 }

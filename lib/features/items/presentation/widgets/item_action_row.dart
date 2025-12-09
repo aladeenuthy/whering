@@ -57,7 +57,7 @@ class ActionIcon extends StatelessWidget {
         HapticFeedback.lightImpact();
         onTap?.call();
       },
-      child: child ?? Icon(icon, size: 22.sp, color: AppColors.textColor),
+      child: child ?? Icon(icon, size: 24.h, color: AppColors.textColor),
     );
   }
 }

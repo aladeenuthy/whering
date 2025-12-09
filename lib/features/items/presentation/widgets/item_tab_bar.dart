@@ -6,7 +6,13 @@ import '../../../../core/resources/app_text_styles.dart';
 import '../../../../core/ui/spacing.dart';
 
 class ItemTabBar extends StatelessWidget {
-  const ItemTabBar({super.key});
+  const ItemTabBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onTabChanged,
+  });
+  final int selectedIndex;
+  final ValueChanged<int> onTabChanged;
 
   static const List<String> _tabs = ['About', 'Styling', 'Stats'];
 
@@ -25,9 +31,10 @@ class ItemTabBar extends StatelessWidget {
         children: List.generate(_tabs.length, (index) {
           return TabItem(
             label: _tabs[index],
-            isSelected: index == 0,
+            isSelected: index == selectedIndex,
             onTap: () {
               HapticFeedback.lightImpact();
+              onTabChanged(index);
             },
           );
         }),
@@ -52,23 +59,27 @@ class TabItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: onTap,
         child: Column(
           children: [
             Center(
               child: Text(
                 label,
-                style: getBoldStyle(
-                  color: isSelected
-                      ? AppColors.textColor
-                      : AppColors.textSecondary,
-                  fontSize: 14,
-                ),
+                style: isSelected
+                    ? getBoldStyle(color: AppColors.textColor, fontSize: 14)
+                    : getMediumStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 14,
+                      ),
               ),
             ),
             AppSpacings.vertical(12),
-            if (isSelected)
-              Divider(color: AppColors.textColor, thickness: 1, height: 1),
+            Divider(
+              color: isSelected ? AppColors.textColor : AppColors.grey,
+              thickness: 2,
+              height: 1,
+            ),
           ],
         ),
       ),
