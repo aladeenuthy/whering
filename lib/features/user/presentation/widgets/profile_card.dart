@@ -1,4 +1,4 @@
-import 'package:whering/features/features.dart';
+import '../../../features.dart';
 
 class ProfileCard extends StatelessWidget {
   static const double avatarHeight = 88;
@@ -57,15 +57,13 @@ class ProfileCard extends StatelessWidget {
                     .map(
                       (tag) => Padding(
                         padding: EdgeInsets.symmetric(horizontal: 4.w),
-                        child: StyleTag(label: tag),
+                        child: ItemTags(label: tag),
                       ),
                     )
                     .toList(),
               ),
               AppSpacings.verticalSpaceMedium(),
-              ProfileTabs(
-             
-              ),
+              ProfileTabs(),
             ],
           ),
         ),

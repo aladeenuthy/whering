@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-import 'package:whering/core/ui/spacing.dart';
 
 import '../resources/app_colors.dart';
+import '../resources/app_text_styles.dart';
+import '../ui/spacing.dart';
 
 class AppButton extends StatefulWidget {
   const AppButton({

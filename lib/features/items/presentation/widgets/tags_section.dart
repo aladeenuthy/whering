@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-import 'package:whering/core/ui/assets.dart';
-import 'package:whering/core/ui/spacing.dart';
+
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_text_styles.dart';
+import '../../../../core/ui/assets.dart';
+import '../../../../core/ui/spacing.dart';
 
 class TagsSection extends StatelessWidget {
   final List<String> tags;

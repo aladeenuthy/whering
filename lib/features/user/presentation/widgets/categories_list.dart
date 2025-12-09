@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:whering/features/features.dart';
+
+import '../../../features.dart';
 
 final List<Category> categories = const [
   Category(label: 'All', image: AssetPngs.all),
@@ -18,8 +19,8 @@ class Category {
   const Category({required this.label, required this.image});
 }
 
-class CategoryList extends StatelessWidget {
-  const CategoryList({super.key});
+class CategoriesList extends StatelessWidget {
+  const CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context) {

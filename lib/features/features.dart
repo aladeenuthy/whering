@@ -62,13 +62,13 @@ export 'user/domain/service/user_service.dart';
 // User feature - Presentation
 export 'user/presentation/bloc/get_user_wardrobe_cubit.dart';
 export 'user/presentation/screens/profile_screen.dart';
-export 'user/presentation/widgets/category_list.dart';
+export 'user/presentation/widgets/categories_list.dart';
 export 'user/presentation/widgets/category_widget.dart';
 export 'user/presentation/widgets/product_card.dart';
 export 'user/presentation/widgets/products_grid.dart';
 export 'user/presentation/widgets/profile_card.dart';
 export 'user/presentation/widgets/profile_stats.dart';
-export 'user/presentation/widgets/style_tag.dart';
+export 'user/presentation/widgets/item_tags.dart';
 export 'user/presentation/widgets/widgets.dart';
 // User feature - Service Locator
 export 'user/user_service_locator.dart';

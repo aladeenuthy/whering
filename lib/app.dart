@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whering/features/features.dart';
+
+import 'features/features.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

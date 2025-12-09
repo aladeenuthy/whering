@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-import 'package:whering/core/shared/app_animated_column.dart';
-import 'package:whering/core/shared/app_button.dart' show AppButton;
-import 'package:whering/core/ui/spacing.dart';
+
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_text_styles.dart';
+import '../../../../core/shared/app_animated_column.dart';
+import '../../../../core/shared/app_button.dart' show AppButton;
+import '../../../../core/ui/spacing.dart';
 
 class ItemActionButtons extends StatelessWidget {
   const ItemActionButtons({super.key});

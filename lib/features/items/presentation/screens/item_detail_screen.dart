@@ -1,4 +1,4 @@
-import 'package:whering/features/features.dart';
+import '../../../features.dart';
 
 class ItemDetailScreen extends StatefulWidget {
   final WardrobePiece piece;
@@ -49,7 +49,6 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       ? '£${widget.piece.price!.toStringAsFixed(2)}'
                       : '£0.00',
                   wearCount: 'WEAR',
-                
                 ),
               ),
               Expanded(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/shared/app_animated_column.dart';
-import 'package:whering/core/shared/app_button.dart';
-import 'package:whering/core/ui/assets.dart';
-import 'package:whering/core/ui/spacing.dart';
+
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/shared/app_animated_column.dart';
+import '../../../../core/shared/app_button.dart';
+import '../../../../core/ui/assets.dart';
+import '../../../../core/ui/spacing.dart';
 
 class ItemActionRow extends StatelessWidget {
   final bool isFavorite;

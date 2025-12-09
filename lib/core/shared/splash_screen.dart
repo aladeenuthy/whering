@@ -1,4 +1,4 @@
-import 'package:whering/features/features.dart';
+import '../../features/features.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

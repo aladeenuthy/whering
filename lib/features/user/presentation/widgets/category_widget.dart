@@ -1,4 +1,4 @@
-import 'package:whering/features/features.dart';
+import '../../../features.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String label;

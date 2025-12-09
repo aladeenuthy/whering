@@ -13,15 +13,15 @@ class ProfileTabs extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: StatItem(count: state.pieces.length, label: 'Items', isSelected: true),
+              child: ProfileTabItem(count: state.pieces.length, label: 'Items', isSelected: true),
             ),
             AppSpacings.horizontalSpaceExtraLarge(),
             Expanded(
-              child: StatItem(count: 1, label: 'Outfits', isSelected: false),
+              child: ProfileTabItem(count: 1, label: 'Outfits', isSelected: false),
             ),
             AppSpacings.horizontalSpaceExtraLarge(),
             Expanded(
-              child: StatItem(count: 0, label: 'Lookbooks', isSelected: false),
+              child: ProfileTabItem(count: 0, label: 'Lookbooks', isSelected: false),
             ),
           ],
         );
@@ -30,12 +30,12 @@ class ProfileTabs extends StatelessWidget {
   }
 }
 
-class StatItem extends StatelessWidget {
+class ProfileTabItem extends StatelessWidget {
   final int count;
   final String label;
   final bool isSelected;
 
-  const StatItem({
+  const ProfileTabItem({
     super.key,
     required this.count,
     required this.label,

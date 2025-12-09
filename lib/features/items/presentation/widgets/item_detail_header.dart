@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:whering/features/features.dart';
+
+import '../../../features.dart';
 
 class ItemDetailHeader extends StatelessWidget {
   final String price;
@@ -26,7 +27,7 @@ class ItemDetailHeader extends StatelessWidget {
               fontFamily: FontConstants.spaceMono,
             ),
           ),
-          Spacer(flex: 3),
+          Spacer(flex: 2),
           GestureDetector(
             onTap: () {
               HapticFeedback.lightImpact();

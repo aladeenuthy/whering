@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whering/features/features.dart';
+
+import '../../../features.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -49,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              CategoryList(),
+                              CategoriesList(),
                               AppSpacings.verticalSpaceMedium(),
                               ProductsGrid(),
                               AppSpacings.verticalSpaceLarge(),

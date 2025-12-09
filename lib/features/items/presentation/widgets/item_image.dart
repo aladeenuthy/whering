@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/shared/image_placeholder.dart';
+
+import '../../../../core/shared/image_placeholder.dart';
 
 class ItemImage extends StatelessWidget {
   final String? imageUrl;

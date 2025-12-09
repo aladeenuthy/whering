@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
 
-class StyleTag extends StatelessWidget {
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_text_styles.dart';
+
+class ItemTags extends StatelessWidget {
   final String label;
 
-  const StyleTag({super.key, required this.label});
+  const ItemTags({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {

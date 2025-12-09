@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:whering/features/features.dart';
+
+import '../../../features.dart';
 
 class ProductCard extends StatefulWidget {
   final WardrobePiece piece;
@@ -88,7 +89,7 @@ class _ProductCardState extends State<ProductCard> {
                       },
                       child: Icon(
                         Icons.visibility_outlined,
-                        size: 20,
+                        size: 24.h,
                         color: isVisible
                             ? AppColors.textColor
                             : AppColors.grey.withValues(alpha: 0.5),
@@ -100,10 +101,8 @@ class _ProductCardState extends State<ProductCard> {
                         setIsFavorite(!isFavorite);
                       },
                       child: Icon(
-                        isFavorite == true
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        size: 14,
+                        Icons.favorite,
+                        size: 24.h,
                         color: isFavorite == true
                             ? AppColors.textColor
                             : AppColors.grey.withValues(alpha: 0.5),

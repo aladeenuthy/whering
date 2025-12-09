@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-import 'package:whering/core/ui/spacing.dart';
+
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_text_styles.dart';
+import '../../../../core/ui/spacing.dart';
 
 class ItemTabBar extends StatelessWidget {
   const ItemTabBar({super.key});

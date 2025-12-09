@@ -1,4 +1,4 @@
-import 'package:whering/features/features.dart';
+import '../../../features.dart';
 
 class ItemDetailsSection extends StatefulWidget {
   final WardrobePiece piece;

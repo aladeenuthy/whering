@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_fonts.dart';
 
+import '../resources/app_colors.dart';
+import '../resources/app_fonts.dart';
 import '../resources/app_text_styles.dart';
 import '../ui/spacing.dart';
 import 'app_button.dart';
