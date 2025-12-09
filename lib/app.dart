@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whering/core/ui/theme.dart';
 
 import 'core/route/route.dart';
-import 'core/shared/splash_screen.dart';
+import 'features/user/presentation/screens/profile_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, _) {
         return MaterialApp(
-           debugShowCheckedModeBanner: false,
-           initialRoute: '/',
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
           navigatorKey: AppRouter.navigatorKey,
           title: 'Whering',
           theme: appTheme(),
-          home: const SplashScreen(),
+          home: ProfileScreen(),
         );
       },
     );

@@ -51,13 +51,28 @@ class AssetManager {
 
 enum AssetSvgs {
   logo('assets/svgs/logo.svg'),
-  logoFull('assets/svgs/logo_full.svg');
+  logoFull('assets/svgs/logo_full.svg'),
+  grid('assets/svgs/grid.svg'),
+  bookmark('assets/svgs/bookmark.svg'),
+  stats('assets/svgs/stats.svg'),
+  favIcon('assets/svgs/fav_icon.svg');
 
   final String path;
   const AssetSvgs(this.path);
 }
 
+enum AssetPngs {
+  profileBg('assets/pngs/profile_bg.png'),
+  userAvatar('assets/pngs/user.png'),
+  tops('assets/pngs/tops.png'),
+  bottoms('assets/pngs/bottoms.png'),
+  footwear('assets/pngs/footwear.png'),
+  outerwear('assets/pngs/outerwear.png'),
+  all('assets/pngs/all.png');
 
+  final String path;
+  const AssetPngs(this.path);
+}
 
 class AppSvgWidget extends StatelessWidget {
   final String assetPath;
@@ -70,7 +85,6 @@ class AppSvgWidget extends StatelessWidget {
     this.color,
     this.height,
     this.width,
- 
   });
 
   /// Returns a new instance with updated properties.

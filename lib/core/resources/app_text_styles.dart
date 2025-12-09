@@ -10,6 +10,7 @@ TextStyle _getTextStyle(
   TextDecoration? decoration,
   double? letterSpacing,
   double? height,
+  
   TextLeadingDistribution? leadingDistribution,
 }) {
   return TextStyle(
@@ -32,13 +33,14 @@ TextStyle getRegularStyle({
   double? letterSpacing,
   double? height,
   FontWeight? fontWeight,
+    String? fontFamily,
   TextLeadingDistribution? leadingDistribution,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     fontWeight ?? FontWeightManager.regular,
     color,
     height: height,
@@ -53,13 +55,14 @@ TextStyle getLightStyle({
   TextDecoration? decoration,
   double? letterSpacing,
   double? height,
+    String? fontFamily,
   TextLeadingDistribution? leadingDistribution,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     FontWeightManager.light,
     color,
     height: height,
@@ -74,13 +77,15 @@ TextStyle getBoldStyle({
   TextDecoration? decoration,
   double? letterSpacing,
   double? height,
+
   TextLeadingDistribution? leadingDistribution,
+  String? fontFamily,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     FontWeightManager.bold,
     color,
     height: height,
@@ -95,13 +100,14 @@ TextStyle getSemiBoldStyle({
   TextDecoration? decoration,
   double? letterSpacing,
   double? height,
+    String? fontFamily,
   TextLeadingDistribution? leadingDistribution,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     FontWeightManager.semiBold,
     color,
     height: height,
@@ -117,12 +123,13 @@ TextStyle getExtraBoldStyle({
   double? letterSpacing,
   double? height,
   TextLeadingDistribution? leadingDistribution,
+    String? fontFamily,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     FontWeightManager.extraBold,
     color,
     height: height,
@@ -138,12 +145,13 @@ TextStyle getMediumStyle({
   double? letterSpacing,
   double? height,
   TextLeadingDistribution? leadingDistribution,
+    String? fontFamily,
 }) {
   return _getTextStyle(
     leadingDistribution: leadingDistribution,
     letterSpacing: letterSpacing,
     fontSize,
-    FontConstants.openSans,
+    fontFamily ?? FontConstants.openSans,
     FontWeightManager.medium,
     color,
     height: height,
