@@ -51,22 +51,25 @@ class _ProductCardState extends State<ProductCard> {
         ),
         child: Stack(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12.r),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                color: AppColors.white,
-                padding: EdgeInsets.all(12),
-                child: widget.piece.imageUrl.isNotEmpty
-                    ? Image.network(
-                        widget.piece.imageUrl,
-                        fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) {
-                          return ImagePlaceholder();
-                        },
-                      )
-                    : ImagePlaceholder(),
+            Hero(
+              tag: widget.piece.id,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.r),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: AppColors.white,
+                  padding: EdgeInsets.all(12),
+                  child: widget.piece.imageUrl.isNotEmpty
+                      ? Image.network(
+                          widget.piece.imageUrl,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return ImagePlaceholder();
+                          },
+                        )
+                      : ImagePlaceholder(),
+                ),
               ),
             ),
             Positioned(

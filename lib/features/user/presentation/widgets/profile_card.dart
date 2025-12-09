@@ -64,10 +64,7 @@ class ProfileCard extends StatelessWidget {
               ),
               AppSpacings.verticalSpaceMedium(),
               ProfileTabs(
-                itemsCount: 5,
-                outfitsCount: 1,
-                lookbooksCount: 0,
-                selectedIndex: 0,
+             
               ),
             ],
           ),

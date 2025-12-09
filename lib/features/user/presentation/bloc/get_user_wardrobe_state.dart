@@ -18,8 +18,6 @@ class GetUserWardrobeState with _$GetUserWardrobeState {
   bool get isEmpty => pieces.isEmpty && isLoaded;
   bool get hasData => pieces.isNotEmpty;
 
-  List<String> get categories =>
-      pieces.map((piece) => piece.category).toSet().toList();
 
   GetUserWardrobeState toLoading() =>
       copyWith(viewState: ViewState.loading, errorMessage: null);

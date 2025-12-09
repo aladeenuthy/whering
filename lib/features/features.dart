@@ -1,4 +1,7 @@
 // Core - App
+export 'package:flutter/material.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
+
 export '../core/app/app_error.dart';
 export '../core/app/dio_exceptions.dart';
 export '../core/app/endpoints.dart';
@@ -31,6 +34,7 @@ export '../core/shared/app_animated_column.dart';
 export '../core/shared/app_button.dart';
 export '../core/shared/app_loading_overlay.dart';
 export '../core/shared/app_retry_widget.dart';
+export '../core/shared/bounce_in_animation.dart';
 export '../core/shared/constants.dart';
 export '../core/shared/image_placeholder.dart';
 export '../core/shared/splash_screen.dart';
@@ -68,6 +72,3 @@ export 'user/presentation/widgets/style_tag.dart';
 export 'user/presentation/widgets/widgets.dart';
 // User feature - Service Locator
 export 'user/user_service_locator.dart';
-
-export 'package:flutter_screenutil/flutter_screenutil.dart';
-export 'package:flutter/material.dart';

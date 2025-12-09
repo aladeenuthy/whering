@@ -49,7 +49,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       ? '£${widget.piece.price!.toStringAsFixed(2)}'
                       : '£0.00',
                   wearCount: 'WEAR',
-                  onClose: () => AppRouter.back(),
+                
                 ),
               ),
               Expanded(
@@ -72,7 +72,10 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                         ),
                         child: Column(
                           children: [
-                            ItemImage(imageUrl: widget.piece.imageUrl),
+                            ItemImage(
+                              imageUrl: widget.piece.imageUrl,
+                              id: widget.piece.id,
+                            ),
                             ItemActionRow(
                               isFavorite: _isFavorite,
                               onFavoritePressed: _onFavoritePressed,

@@ -1,53 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/resources/app_colors.dart';
-import 'package:whering/core/resources/app_fonts.dart';
-import 'package:whering/core/resources/app_text_styles.dart';
-import 'package:whering/core/ui/spacing.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../features.dart';
 
 class ProfileTabs extends StatelessWidget {
-  final int itemsCount;
-  final int outfitsCount;
-  final int lookbooksCount;
-  final int selectedIndex;
-
-  const ProfileTabs({
-    super.key,
-    required this.itemsCount,
-    required this.outfitsCount,
-    required this.lookbooksCount,
-    required this.selectedIndex,
-  });
+  const ProfileTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Expanded(
-          child: StatItem(
-            count: itemsCount,
-            label: 'Items',
-            isSelected: selectedIndex == 0,
-          ),
-        ),
-        AppSpacings.horizontalSpaceExtraLarge(),
-        Expanded(
-          child: StatItem(
-            count: outfitsCount,
-            label: 'Outfits',
-            isSelected: selectedIndex == 1,
-          ),
-        ),
-        AppSpacings.horizontalSpaceExtraLarge(),
-        Expanded(
-          child: StatItem(
-            count: lookbooksCount,
-            label: 'Lookbooks',
-            isSelected: selectedIndex == 2,
-          ),
-        ),
-      ],
+    return BlocBuilder<GetUserWardrobeCubit, GetUserWardrobeState>(
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: StatItem(count: state.pieces.length, label: 'Items', isSelected: true),
+            ),
+            AppSpacings.horizontalSpaceExtraLarge(),
+            Expanded(
+              child: StatItem(count: 1, label: 'Outfits', isSelected: false),
+            ),
+            AppSpacings.horizontalSpaceExtraLarge(),
+            Expanded(
+              child: StatItem(count: 0, label: 'Lookbooks', isSelected: false),
+            ),
+          ],
+        );
+      },
     );
   }
 }
