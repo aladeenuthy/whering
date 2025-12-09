@@ -1,29 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whering/features/user/domain/models/wardrobe_piece.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_size.dart';
 
 class ProductCard extends StatelessWidget {
-  final String imageUrl;
-  final bool isLiked;
-  final int viewCount;
-  final VoidCallback? onTap;
-  final VoidCallback? onLike;
+  final WardrobePiece piece;
 
-  const ProductCard({
-    super.key,
-    required this.imageUrl,
-    this.isLiked = false,
-    this.viewCount = 0,
-    this.onTap,
-    this.onLike,
-  });
+  const ProductCard({super.key, required this.piece});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => {HapticFeedback.lightImpact()},
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -37,10 +28,10 @@ class ProductCard extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 color: AppColors.white,
-                child: imageUrl.isNotEmpty
+                child: piece.imageUrl.isNotEmpty
                     ? Image.network(
-                        imageUrl,
-                        fit: BoxFit.cover,
+                        piece.imageUrl,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
                           return _PlaceholderContent();
                         },
@@ -53,7 +44,6 @@ class ProductCard extends StatelessWidget {
               top: 12.h,
               left: 0,
               right: 0,
-
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: Row(
@@ -65,11 +55,13 @@ class ProductCard extends StatelessWidget {
                       color: AppColors.grey.withValues(alpha: 0.5),
                     ),
                     GestureDetector(
-                      onTap: onLike,
+                      onTap: () => {HapticFeedback.lightImpact()},
                       child: Icon(
-                        isLiked ? Icons.favorite : Icons.favorite_border,
+                        piece.isFavorite == true
+                            ? Icons.favorite
+                            : Icons.favorite_border,
                         size: 14,
-                        color: isLiked
+                        color: piece.isFavorite == true
                             ? AppColors.secondary
                             : AppColors.grey.withValues(alpha: 0.5),
                       ),
