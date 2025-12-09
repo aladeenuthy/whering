@@ -102,7 +102,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                           index: _index,
                           onTagRemoved: _onTagRemoved,
                           piece: widget.piece,
-                          onTabChanged: _onTabChanged,
+
                           tags: _tags,
                         ),
                       ),
@@ -121,53 +121,49 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
 }
 
 class TabContentBuilder extends StatelessWidget {
-  const TabContentBuilder({
-    super.key,
-    required this.index,
-    required this.tags,
-    required this.onTagRemoved,
-    required this.piece,
-    required this.onTabChanged,
-  });
   final int index;
   final List<String> tags;
   final ValueChanged<String>? onTagRemoved;
   final WardrobePiece piece;
-  final ValueChanged<int> onTabChanged;
+
+  const TabContentBuilder({
+    super.key,
+    required this.index,
+    required this.tags,
+    required this.piece,
+    this.onTagRemoved,
+  });
 
   @override
   Widget build(BuildContext context) {
-    if (index == 0) {
-      return AboutTab(piece: piece, tags: tags, onTagRemoved: onTagRemoved);
-    } else if (index == 1) {
-      return Column(
-        children: [
-          AppSpacings.vertical(50),
-          Text(
-            'Styling Tab',
-            style: getBoldStyle(
-              color: AppColors.textColor,
-              fontSize: 24,
-              fontFamily: FontConstants.spaceMono,
-            ),
+    return switch (index) {
+      0 => AboutTab(piece: piece, tags: tags, onTagRemoved: onTagRemoved),
+      1 => const _PlaceholderTab(title: 'Styling Tab'),
+      2 => const _PlaceholderTab(title: 'Stats Tab'),
+      _ => const SizedBox.shrink(),
+    };
+  }
+}
+
+class _PlaceholderTab extends StatelessWidget {
+  final String title;
+
+  const _PlaceholderTab({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        AppSpacings.vertical(50),
+        Text(
+          title,
+          style: getBoldStyle(
+            color: AppColors.textColor,
+            fontSize: 24,
+            fontFamily: FontConstants.spaceMono,
           ),
-        ],
-      );
-    } else if (index == 2) {
-      return Column(
-        children: [
-          AppSpacings.vertical(50),
-          Text(
-            'Stats Tab',
-            style: getBoldStyle(
-              color: AppColors.textColor,
-              fontSize: 24,
-              fontFamily: FontConstants.spaceMono,
-            ),
-          ),
-        ],
-      );
-    }
-    return const SizedBox.shrink();
+        ),
+      ],
+    );
   }
 }
