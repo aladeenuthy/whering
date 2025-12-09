@@ -1,12 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:whering/core/service_locator.dart';
-import 'package:whering/core/ui/theme.dart';
-import 'package:whering/features/user/presentation/bloc/get_user_wardrobe_cubit.dart';
-
-import 'core/route/route.dart';
-import 'features/user/presentation/screens/profile_screen.dart';
+import 'package:whering/features/features.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,7 +21,7 @@ class MyApp extends StatelessWidget {
             navigatorKey: AppRouter.navigatorKey,
             title: 'Whering',
             theme: appTheme(),
-            home: ProfileScreen(),
+            home: SplashScreen(),
           );
         },
       ),
