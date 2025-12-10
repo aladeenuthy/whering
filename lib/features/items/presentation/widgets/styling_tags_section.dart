@@ -33,7 +33,7 @@ class StyleWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: AppColors.grey.withValues(alpha: 0.3),
+            color: AppColors.grey.withValues(alpha: 0.5),
             width: 1,
           ),
         ),

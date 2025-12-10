@@ -36,9 +36,9 @@ export '../core/shared/app_loading_overlay.dart';
 export '../core/shared/app_retry_widget.dart';
 export '../core/shared/bounce_in_animation.dart';
 export '../core/shared/constants.dart';
-export '../core/shared/image_placeholder.dart';
 export '../core/shared/splash_screen.dart';
 export '../core/shared/view_state.dart';
+export '../core/shared/app_network_image.dart';
 // Core - UI
 export '../core/ui/assets.dart';
 export '../core/ui/spacing.dart';
