@@ -29,7 +29,12 @@ class AppRetryWidget extends StatelessWidget {
           ),
         ),
         AppSpacings.verticalSpaceMedium(),
-        AppButton(label: 'Retry', onPressed: () => {}),
+        AppButton(
+          label: 'Retry',
+          onPressed: () {
+            onRetry();
+          },
+        ),
       ],
     );
   }
