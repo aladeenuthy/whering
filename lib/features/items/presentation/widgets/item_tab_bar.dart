@@ -1,88 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_text_styles.dart';
-import '../../../../core/ui/spacing.dart';
 
 class ItemTabBar extends StatelessWidget {
-  const ItemTabBar({
-    super.key,
-    required this.selectedIndex,
-    required this.onTabChanged,
-  });
-  final int selectedIndex;
-  final ValueChanged<int> onTabChanged;
+  const ItemTabBar({super.key, required this.tabController});
+
+  final TabController tabController;
 
   static const List<String> _tabs = ['About', 'Styling', 'Stats'];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.grey.withValues(alpha: 0.3),
-            width: 1,
-          ),
-        ),
+    return TabBar(
+      controller: tabController,
+      labelColor: AppColors.textColor,
+      unselectedLabelColor: AppColors.textSecondary,
+      labelStyle: getBoldStyle(color: AppColors.textColor, fontSize: 14),
+      unselectedLabelStyle: getMediumStyle(
+        color: AppColors.textSecondary,
+        fontSize: 14,
       ),
-      child: Row(
-        children: List.generate(_tabs.length, (index) {
-          return TabItem(
-            label: _tabs[index],
-            isSelected: index == selectedIndex,
-            onTap: () {
-              HapticFeedback.lightImpact();
-              onTabChanged(index);
-            },
-          );
-        }),
-      ),
-    );
-  }
-}
-
-class TabItem extends StatelessWidget {
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const TabItem({
-    super.key,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: onTap,
-        child: Column(
-          children: [
-            Center(
-              child: Text(
-                label,
-                style: isSelected
-                    ? getBoldStyle(color: AppColors.textColor, fontSize: 14)
-                    : getMediumStyle(
-                        color: AppColors.textSecondary,
-                        fontSize: 14,
-                      ),
-              ),
-            ),
-            AppSpacings.vertical(12),
-            Divider(
-              color: isSelected ? AppColors.textColor : AppColors.grey,
-              thickness: 2,
-              height: 1,
-            ),
-          ],
-        ),
-      ),
+      indicatorColor: AppColors.textColor,
+      indicatorWeight: 2,
+      indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: AppColors.grey.withValues(alpha: 0.5),
+      tabs: _tabs.map((label) => Tab(text: label)).toList(),
     );
   }
 }

@@ -9,22 +9,25 @@ class ItemDetailScreen extends StatefulWidget {
   State<ItemDetailScreen> createState() => _ItemDetailScreenState();
 }
 
-class _ItemDetailScreenState extends State<ItemDetailScreen> {
-  int _index = 0;
+class _ItemDetailScreenState extends State<ItemDetailScreen>
+    with SingleTickerProviderStateMixin {
   bool _isFavorite = false;
   List<String> _tags = [];
+
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
     _isFavorite = widget.piece.isFavorite ?? false;
     _tags = List<String>.from(widget.piece.tags);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
-  void _onTabChanged(int index) {
-    setState(() {
-      _index = index;
-    });
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   void _onFavoritePressed() {
@@ -91,18 +94,14 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                         ),
                       ),
                       AppSpacings.verticalSpaceLarge(),
-                      ItemTabBar(
-                        selectedIndex: _index,
-                        onTabChanged: _onTabChanged,
-                      ),
+                      ItemTabBar(tabController: _tabController),
                       AppSpacings.verticalSpaceLarge(),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: TabContentBuilder(
-                          index: _index,
+                          tabController: _tabController,
                           onTagRemoved: _onTagRemoved,
                           piece: widget.piece,
-
                           tags: _tags,
                         ),
                       ),
@@ -121,14 +120,14 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
 }
 
 class TabContentBuilder extends StatelessWidget {
-  final int index;
+  final TabController tabController;
   final List<String> tags;
   final ValueChanged<String>? onTagRemoved;
   final WardrobePiece piece;
 
   const TabContentBuilder({
     super.key,
-    required this.index,
+    required this.tabController,
     required this.tags,
     required this.piece,
     this.onTagRemoved,
@@ -136,12 +135,17 @@ class TabContentBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return switch (index) {
-      0 => AboutTab(piece: piece, tags: tags, onTagRemoved: onTagRemoved),
-      1 => const _PlaceholderTab(title: 'Styling Tab'),
-      2 => const _PlaceholderTab(title: 'Stats Tab'),
-      _ => const SizedBox.shrink(),
-    };
+    return AnimatedBuilder(
+      animation: tabController,
+      builder: (context, _) {
+        return switch (tabController.index) {
+          0 => AboutTab(piece: piece, tags: tags, onTagRemoved: onTagRemoved),
+          1 => const _PlaceholderTab(title: 'Styling Tab'),
+          2 => const _PlaceholderTab(title: 'Stats Tab'),
+          _ => const SizedBox.shrink(),
+        };
+      },
+    );
   }
 }
 
